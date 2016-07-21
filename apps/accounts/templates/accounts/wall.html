@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>The Wall</title>
+        <meta name="description" content="The Wall">
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/styles.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <form action="{% url 'accounts_logout' %}" method="post">
+                {% csrf_token %}
+                <input class="btn btn-default" id="logoutbutton" type="submit" value="Logout">
+            </form>
+            <h1>Welcome {{person.first_name}}!</h1>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ person.first_name }} {{person.last_name}}</div>
+                <table class="table">
+                    <tr><td>Email: {{person.email}}</td></tr>
+                    <tr><td>Created at: {{person.created_at}}</td></tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
